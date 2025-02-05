@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="model_save_before">
+        <observer name="protect_admin_actions_log" instance="Protect\AdminActions\Observer\LogAdminAction"/>
+    </event>
+    <event name="model_delete_before">
+        <observer name="protect_admin_actions_log_delete" instance="Protect\AdminActions\Observer\LogAdminAction"/>
+    </event>
+    <event name="admin_user_authenticate_after">
+        <observer name="protect_admin_login_attempt" instance="Protect\AdminActions\Observer\LogLoginAttempt"/>
+    </event>
+</config>

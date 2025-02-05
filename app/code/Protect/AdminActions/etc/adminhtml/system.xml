@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="protect" translate="label" sortOrder="300">
+            <label>Protection</label>
+        </tab>
+        <section id="admin_security" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Admin Security</label>
+            <tab>protect</tab>
+            <resource>Protect_AdminActions::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Module</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="log_retention_days" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Log Retention Period (days)</label>
+                    <validate>required-entry validate-digits validate-greater-than-zero</validate>
+                    <comment>Logs older than this will be automatically cleaned</comment>
+                </field>
+                <field id="notify_suspicious" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Notify on Suspicious Activity</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="max_login_failures" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Maximum Login Failures Before Temporary Block</label>
+                    <validate>required-entry validate-digits validate-greater-than-zero</validate>
+                    <comment>Number of failed attempts before temporary blocking</comment>
+                </field>
+                <field id="block_duration" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Block Duration (minutes)</label>
+                    <validate>required-entry validate-digits validate-greater-than-zero</validate>
+                    <comment>Duration of temporary block after exceeding maximum login failures</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

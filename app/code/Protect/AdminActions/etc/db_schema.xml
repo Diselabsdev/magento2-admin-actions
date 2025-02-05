@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="protect_admin_actions_log" resource="default" engine="innodb" comment="Admin Actions Log Table">
+        <column xsi:type="int" name="log_id" unsigned="true" nullable="false" identity="true" comment="Log ID"/>
+        <column xsi:type="varchar" name="username" nullable="false" length="40" comment="Admin Username"/>
+        <column xsi:type="varchar" name="action_type" nullable="false" length="64" comment="Action Type"/>
+        <column xsi:type="varchar" name="object_type" nullable="true" length="64" comment="Object Type"/>
+        <column xsi:type="int" name="object_id" unsigned="true" nullable="true" comment="Object ID"/>
+        <column xsi:type="text" name="details" nullable="true" comment="Action Details"/>
+        <column xsi:type="varchar" name="ip_address" nullable="true" length="45" comment="IP Address"/>
+        <column xsi:type="varchar" name="location" nullable="true" length="255" comment="Geolocation"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="log_id"/>
+        </constraint>
+        <index referenceId="PROTECT_ADMIN_ACTIONS_LOG_USERNAME" indexType="btree">
+            <column name="username"/>
+        </index>
+        <index referenceId="PROTECT_ADMIN_ACTIONS_LOG_IP" indexType="btree">
+            <column name="ip_address"/>
+        </index>
+    </table>
+    <table name="protect_admin_login_attempts" resource="default" engine="innodb" comment="Admin Login Attempts Table">
+        <column xsi:type="int" name="attempt_id" unsigned="true" nullable="false" identity="true" comment="Attempt ID"/>
+        <column xsi:type="varchar" name="username" nullable="false" length="40" comment="Username"/>
+        <column xsi:type="varchar" name="ip_address" nullable="true" length="45" comment="IP Address"/>
+        <column xsi:type="varchar" name="location" nullable="true" length="255" comment="Geolocation"/>
+        <column xsi:type="smallint" name="status" unsigned="true" nullable="false" default="0" comment="Login Status"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="attempt_id"/>
+        </constraint>
+        <index referenceId="PROTECT_ADMIN_LOGIN_ATTEMPTS_IP" indexType="btree">
+            <column name="ip_address"/>
+        </index>
+        <index referenceId="PROTECT_ADMIN_LOGIN_ATTEMPTS_USERNAME" indexType="btree">
+            <column name="username"/>
+        </index>
+    </table>
+    <table name="protect_admin_suspicious_activity" resource="default" engine="innodb" comment="Suspicious Activity Log Table">
+        <column xsi:type="int" name="activity_id" unsigned="true" nullable="false" identity="true" comment="Activity ID"/>
+        <column xsi:type="varchar" name="type" nullable="false" length="64" comment="Activity Type"/>
+        <column xsi:type="text" name="details" nullable="true" comment="Activity Details"/>
+        <column xsi:type="varchar" name="ip_address" nullable="true" length="45" comment="IP Address"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="activity_id"/>
+        </constraint>
+        <index referenceId="PROTECT_ADMIN_SUSPICIOUS_ACTIVITY_IP" indexType="btree">
+            <column name="ip_address"/>
+        </index>
+    </table>
+</schema>
