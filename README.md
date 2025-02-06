@@ -120,9 +120,24 @@ bin/magento cache:flush
 - Secure logging practices
 - Automated log cleanup
 
+## Folder Structure
+
+```
+app/code/Protect/AdminActions/
+├── Block/           # Block classes for frontend rendering
+├── Controller/      # Admin and frontend controllers
+├── Cron/           # Cron job classes
+├── etc/            # Configuration files
+├── Helper/         # Helper classes
+├── Model/          # Model classes and resource models
+├── Setup/          # Installation and upgrade scripts
+├── view/           # Layout, templates, and assets
+└── registration.php
+```
+
 ## Support
 
-For support, please email us at mail.amalviju@gmail.com or create an issue in our GitHub repository.
+For support, please email us at info@diselabs.com or create an issue in our GitHub repository.
 
 ## Contributing
 
