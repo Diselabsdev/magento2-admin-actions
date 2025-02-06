@@ -1,5 +1,5 @@
 {
-    "name": "diselabs/admin-actions",
+    "name": "diselabsdev/admin-actions",
     "description": "Enhanced security and monitoring for Magento 2 admin panel",
     "type": "magento2-module",
     "version": "1.0.0",

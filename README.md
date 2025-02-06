@@ -36,39 +36,37 @@ Enhanced security and monitoring for your Magento 2 store's admin panel. Track, 
 
 ## Installation
 
-### Via Composer (Recommended)
+### Using Composer (Recommended)
 
 ```bash
-composer require protect/admin-actions
-php bin/magento setup:upgrade
-php bin/magento setup:di:compile
-php bin/magento setup:static-content:deploy -f
-php bin/magento cache:clean
+composer require diselabsdev/admin-actions
+bin/magento setup:upgrade
+bin/magento setup:di:compile
+bin/magento setup:static-content:deploy -f
+bin/magento cache:flush
 ```
 
 ### Manual Installation
 
-1. Create directory `app/code/Protect/AdminActions`
-2. Download the module files to the directory
+1. Download the latest release
+2. Extract the contents into `app/code/Protect/AdminActions/` directory
 3. Run the following commands:
-
 ```bash
-php bin/magento module:enable Protect_AdminActions
-php bin/magento setup:upgrade
-php bin/magento setup:di:compile
-php bin/magento setup:static-content:deploy -f
-php bin/magento cache:clean
+bin/magento setup:upgrade
+bin/magento setup:di:compile
+bin/magento setup:static-content:deploy -f
+bin/magento cache:flush
 ```
 
 ## Configuration
 
-1. Go to **Stores → Configuration → Protection → Admin Security**
+1. Go to **Stores > Configuration > Security > Admin Actions Log**
 2. Configure the following settings:
-   - Enable/Disable Module
-   - Log Retention Period
-   - Suspicious Activity Notifications
-   - Maximum Login Failures
-   - Block Duration
+   - Enable/Disable the module
+   - Set log retention period
+   - Configure email notifications
+   - Set IP blocking rules
+   - Configure geolocation tracking
 
 ## Usage
 
@@ -124,10 +122,7 @@ php bin/magento cache:clean
 
 ## Support
 
-For issues and feature requests, please:
-1. Check the [documentation](docs/index.md)
-2. Submit an issue on our [GitHub repository](https://github.com/protect/admin-actions/issues)
-3. Contact our support team at support@protect.com
+For support, please email us at mail.amalviju@gmail.com or create an issue in our GitHub repository.
 
 ## Contributing
 
